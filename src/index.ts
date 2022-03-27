@@ -1,12 +1,7 @@
-import createApp from './express'
-import { Config } from './config'
+import setup from './express'
 
-const config = Config()
+const main = async () => {
+    await setup()
+}
 
-const express = createApp(config).listen(config.port, () => {
-    console.log(`Server listening on port: ${config.port}`)
-})
-
-process.on('SIGINT', function () {
-    express.close()
-})
+main()
