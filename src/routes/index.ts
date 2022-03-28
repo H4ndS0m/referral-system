@@ -10,8 +10,9 @@ export default (app: Application, config: IConfig) => {
     const userService = UserService()
 
     const referral = ReferralRoutes(referralService)
-    const user = UserRoutes(userService)
+    const user = UserRoutes(userService, referralService)
 
     app.get('/referral/percentage', referral.getReferralPercentage)
+
     app.post('/users', user.createUser)
 }
