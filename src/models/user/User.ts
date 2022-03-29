@@ -46,7 +46,13 @@ export const UserRepo = () => {
         return user
     }
 
+    const getUserByUid = async (userId: string) => {
+        const user = await userModel.findOne({ uid: userId })
+        return user
+    }
+
     return {
-        initialize
+        initialize,
+        getUserByUid
     }
 }
