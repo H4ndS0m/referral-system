@@ -1,5 +1,5 @@
 export interface IReferralObject {
-    referreal: string
+    referral: string
     status: string
     amount: string
     timestramp: string

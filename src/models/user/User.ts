@@ -1,7 +1,7 @@
 import { Schema, model } from 'mongoose'
-import { v4 as uuidv4 } from 'uuid'
+
 import { IUser } from './IUser'
-import { createHash, randomUUID } from 'crypto'
+
 
 const { String, Number, Boolean } = Schema.Types
 
@@ -34,22 +34,12 @@ const userModel = model<IUser>('User', UserSchema)
 
 export const UserRepo = () => {
     const initialize = async (body: IUser) => {
-        const uuid = uuidv4()
-        const referral = createHash('sha256')
-            .update(randomUUID()).digest('hex')
-
-        const modeledUser: IUser = {
-            ...body,
-            uid: uuid,
-            referral: referral
-        }
-
-        const user = await userModel.create(modeledUser)
+        const user = await userModel.create(body)
         return user
     }
 
-    const getUserByUid = async (userId: string) => {
-        const user = await userModel.findOne({ uid: userId })
+    const getUserByUid = async (id: string) => {
+        const user = await userModel.findOne({ uid: id })
         return user
     }
 
