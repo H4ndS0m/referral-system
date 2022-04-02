@@ -1,7 +1,6 @@
 import { IConfig } from '../../config'
-import { IReferral } from '../../models/referral'
+import { IReferral, referralRepo } from '../../models/referral'
 import { IReferralService } from './IReferralService'
-import { referralRepo } from '../../models/referral'
 
 export const ReferralService = (config: IConfig): IReferralService => {
     const getReferralPercentage = (): number => {

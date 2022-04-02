@@ -1,4 +1,4 @@
-import { IUser } from "../../models/user";
+import { IUser } from '../../models/user'
 
 export interface IUserService {
     createUser(body: IUser): Promise<IUser>,

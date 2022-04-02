@@ -8,6 +8,6 @@ export default (referralService: IReferralService) => {
     }
 
     return {
-        getReferralPercentage,
+        getReferralPercentage
     }
 }

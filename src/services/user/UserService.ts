@@ -1,5 +1,5 @@
-import { IUser } from "../../models/user";
-import { IUserService } from "./IUserService";
+import { IUser } from '../../models/user'
+import { IUserService } from './IUserService'
 import { userRepo } from '../../models'
 
 export const UserService = (): IUserService => {

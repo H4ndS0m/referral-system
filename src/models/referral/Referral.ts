@@ -6,22 +6,39 @@ const { String, Boolean } = Schema.Types
 
 const referralObjectSchema = new Schema(
     {
-        code: { type: String, required: true, unique: true }
-    }
+        referral: { 
+            type: String, 
+            required: true 
+        },
+        status: {
+            type: String,
+            required: true,
+            enum: ['pending', 'paid']
+        },
+        amount: {
+            type: String,
+            required: true
+        },
+        timestamp: {
+            type: String,
+            default: new Date().toLocaleString().split(',')[0]
+        }
+    },
+    { _id: true }
 )
 
 const referralSchema = new Schema(
     {
         uid: { type: String, required: true },
-        userId: { 
-            type: String, 
-            required: [true, ''], 
-            unique: true 
+        userId: {
+            type: String,
+            required: [true, ''],
+            unique: true
         },
-        referrals: { 
-            type: [referralObjectSchema], 
-            required: true, 
-            default: [] 
+        referrals: {
+            type: [referralObjectSchema],
+            required: false,
+            unique: false
         },
         active: { type: Boolean, default: true }
     },

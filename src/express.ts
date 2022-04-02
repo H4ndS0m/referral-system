@@ -1,12 +1,10 @@
 import express from 'express'
-import { IConfig } from './config'
-import { Config } from './config'
+import { IConfig, Config } from './config'
 import routes from './routes'
 import auth from './middleware/authMiddleware'
 import mongoConnection from './config/data/MongoDb'
 
 const createApp = (config: IConfig) => {
-
     const app = express()
 
     app.use(express.json())

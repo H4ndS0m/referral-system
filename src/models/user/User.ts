@@ -1,7 +1,7 @@
 import { Schema, model } from 'mongoose'
 import { v4 as uuidv4 } from 'uuid'
 import { IUser } from './IUser'
-import { createHash } from 'crypto'
+import { createHash, randomUUID } from 'crypto'
 
 const { String, Number, Boolean } = Schema.Types
 
@@ -20,9 +20,10 @@ const UserSchema = new Schema(
         },
         password: {
             type: String,
-            required: [true, 'Please add a password'],
+            required: [true, 'Please add a password']
         },
         referral: { type: String, required: true, unique: true },
+        referred: { type: String, required: false },
         balance: { type: Number, default: 0 },
         active: { type: Boolean, default: true }
     },
@@ -34,7 +35,8 @@ const userModel = model<IUser>('User', UserSchema)
 export const UserRepo = () => {
     const initialize = async (body: IUser) => {
         const uuid = uuidv4()
-        const referral = createHash('sha256').digest('hex')
+        const referral = createHash('sha256')
+            .update(randomUUID()).digest('hex')
 
         const modeledUser: IUser = {
             ...body,
@@ -51,8 +53,14 @@ export const UserRepo = () => {
         return user
     }
 
+    const existsByReferred = async (id: string) => {
+        const control = await userModel.exists({ referral: id })
+        return control
+    }
+
     return {
         initialize,
-        getUserByUid
+        getUserByUid,
+        existsByReferred
     }
 }

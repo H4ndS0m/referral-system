@@ -15,4 +15,5 @@ export default (app: Application, config: IConfig) => {
     app.get('/referral/percentage', referral.getReferralPercentage)
 
     app.post('/users', user.createUser)
+    app.post('/users/:referredId', user.createUserWithReferral)
 }

@@ -1,4 +1,4 @@
-import { IReferral } from "../../models/referral"
+import { IReferral } from '../../models/referral'
 
 export interface IReferralService {
     getReferralPercentage(): number

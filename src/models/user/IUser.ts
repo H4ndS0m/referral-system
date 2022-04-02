@@ -4,6 +4,7 @@ export interface IUser {
     username: string
     password: string
     referral: string
+    referred: string
     balance: number
     active: boolean
 }
