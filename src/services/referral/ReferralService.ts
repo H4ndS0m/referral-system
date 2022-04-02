@@ -1,5 +1,5 @@
 import { IConfig } from '../../config'
-import { IReferral, referralRepo } from '../../models/referral'
+import { referralRepo } from '../../models/referral'
 import { IReferralService } from './IReferralService'
 
 export const ReferralService = (config: IConfig): IReferralService => {
@@ -8,7 +8,7 @@ export const ReferralService = (config: IConfig): IReferralService => {
         return percentage
     }
 
-    const createReferral = async (userId: string): Promise<IReferral> => {
+    const createReferral = async (userId: string) => {
         const referral = await referralRepo.initialize(userId)
         return referral
     }
