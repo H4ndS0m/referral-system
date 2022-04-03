@@ -2,7 +2,7 @@ export interface IReferralObject {
     referral: string
     status: string
     amount: string
-    timestramp: string
+    timestamp?: string
 }
 
 export interface IReferral {

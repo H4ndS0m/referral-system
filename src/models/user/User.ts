@@ -43,14 +43,26 @@ export const UserRepo = () => {
         return user
     }
 
+    const getReferredByUid = async (id:string) => {
+        const referred = await userModel.findOne({ uid: id }, { referred: 1 })
+        return referred?.referred
+    }
+
     const existsByReferred = async (id: string) => {
         const control = await userModel.exists({ referral: id })
+        return control
+    }
+
+    const existsByUid = async (id: string) => {
+        const control = await userModel.exists({ uid: id })
         return control
     }
 
     return {
         initialize,
         getUserByUid,
-        existsByReferred
+        getReferredByUid,
+        existsByReferred,
+        existsByUid
     }
 }

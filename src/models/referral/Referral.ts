@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose'
-import { IReferral } from './IReferral'
+import { IReferral, IReferralObject } from './IReferral'
 import { v4 as uuidv4 } from 'uuid'
 
 const { String, Boolean } = Schema.Types
@@ -58,7 +58,13 @@ export const ReferralRepo = () => {
         return referral
     }
 
+    const updateReferralsByUserId = async (userId: string, body: IReferralObject) => {
+        const referral = await referralModel.updateOne({ userId: userId }, { $push: { referrals: body }})
+        return referral
+    }   
+
     return {
-        initialize
+        initialize,
+        updateReferralsByUserId
     }
 }

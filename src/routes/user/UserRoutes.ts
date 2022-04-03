@@ -8,8 +8,13 @@ export default (userService: IUserService,
 ) => {
     const createUser = async (req: Request, res: Response) => {
         const user = await userService.createUser(req.body)
-        await referralService.createReferral(user.uid)
-        return res.status(201).json(user)
+        await referralService.createReferral(user.referral)
+        return res.status(201).json({
+            id: user._id,
+            code: res.statusCode,
+            referral: user.referral,
+            message: 'A new user has been created'
+        })
     }
 
     const createUserWithReferral = async (req: Request, res: Response) => {
@@ -29,6 +34,7 @@ export default (userService: IUserService,
         return res.status(201).json({
             id: user._id,
             code: res.statusCode,
+            referral: user.referral,
             message: 'A new user has been created'
         })
     }

@@ -9,7 +9,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
         })
     else {
         const uuid = req.headers['x-uid'] as string
-        const user = await userRepo.getUserByUid(uuid)
+        const user = await userRepo.existsByUid(uuid)
         if (!user)
             return res.status(403).json({
                 code: res.statusCode,
