@@ -6,9 +6,9 @@ const { String, Boolean } = Schema.Types
 
 const referralObjectSchema = new Schema(
     {
-        referral: { 
-            type: String, 
-            required: true 
+        referral: {
+            type: String,
+            required: true
         },
         status: {
             type: String,
@@ -59,9 +59,9 @@ export const ReferralRepo = () => {
     }
 
     const updateReferralsByUserId = async (userId: string, body: IReferralObject) => {
-        const referral = await referralModel.updateOne({ userId: userId }, { $push: { referrals: body }})
+        const referral = await referralModel.updateOne({ userId: userId }, { $push: { referrals: body } })
         return referral
-    }   
+    }
 
     return {
         initialize,

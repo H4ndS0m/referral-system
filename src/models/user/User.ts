@@ -2,7 +2,6 @@ import { Schema, model } from 'mongoose'
 
 import { IUser } from './IUser'
 
-
 const { String, Number, Boolean } = Schema.Types
 
 const UserSchema = new Schema(

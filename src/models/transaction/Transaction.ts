@@ -20,7 +20,7 @@ const TransactionSchema = new Schema(
         timestamp: {
             type: String,
             default: new Date().toLocaleString().split(',')[0]
-        },
+        }
     },
     { versionKey: false }
 )
@@ -29,7 +29,7 @@ const transactionModel = model<ITransaction>('Transaction', TransactionSchema)
 
 export const TransactionRepo = () => {
     const initialize = async (body: ITransaction) => {
-        const transaction = transactionModel.create(body)
+        const transaction = await transactionModel.create(body)
         return transaction
     }
 

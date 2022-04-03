@@ -1,7 +1,7 @@
-import { ITransactionService } from "./ITransactionService"
-import { userRepo, transactionRepo, referralRepo } from "../../models"
-import { ITransaction } from "../../models/transaction"
-import { IConfig } from "../../config"
+import { ITransactionService } from './ITransactionService'
+import { userRepo, transactionRepo, referralRepo } from '../../models'
+import { ITransaction } from '../../models/transaction'
+import { IConfig } from '../../config'
 
 export default (config: IConfig): ITransactionService => {
     const rewardCalculation = (amount: string) => {

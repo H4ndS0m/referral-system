@@ -1,5 +1,5 @@
-import { TransactionRepo } from "./Transaction"
+import { TransactionRepo } from './Transaction'
 
-export * from "./ITransaction"
+export * from './ITransaction'
 
 export const transactionRepo = TransactionRepo()
