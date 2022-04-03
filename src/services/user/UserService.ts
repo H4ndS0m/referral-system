@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { createHash, randomUUID } from 'crypto'
 import bcrypt from 'bcrypt'
 
-export const UserService = (): IUserService => {
+export default (): IUserService => {
     const hashingPassword = async (password: string) => {
         const salts = await bcrypt.genSalt(10)
         const hashedPassword = await bcrypt.hash(password, salts)
