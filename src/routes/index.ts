@@ -22,6 +22,4 @@ export default (app: Application, config: IConfig) => {
     app.post('/users/:referredId', user.createUserWithReferral)
 
     app.post('/transactions', transaction.createTransaction)
-
-
 }

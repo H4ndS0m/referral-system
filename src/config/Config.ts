@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import { IConfig } from './IConfig'
 
 export const Config = (): IConfig => {

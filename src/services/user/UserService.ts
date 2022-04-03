@@ -16,7 +16,7 @@ export default (): IUserService => {
         const uuid = uuidv4()
         const referral = createHash('sha256')
             .update(randomUUID()).digest('hex')
-            const hashedPassword = await hashingPassword(body.password)
+        const hashedPassword = await hashingPassword(body.password)
 
         const modeledBody: IUser = {
             ...body,

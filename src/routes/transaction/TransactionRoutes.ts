@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import { ITransactionService } from "../../services";
+import { Request, Response } from 'express'
+import { ITransactionService } from '../../services'
 
 export default (transactionService: ITransactionService) => {
     const createTransaction = async (req: Request, res: Response) => {
