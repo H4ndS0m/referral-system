@@ -10,9 +10,9 @@ export default (config: IConfig): ITransactionService => {
         return reward.toFixed(2)
     }
 
-    const createTransaction = async (body: ITransaction, id: string): Promise<ITransaction> => {
+    const createTransaction = async (body: ITransaction): Promise<ITransaction> => {
         const transaction = await transactionRepo.initialize(body)
-        const referred = await userRepo.getReferredByUid(id) as string
+        const referred = await userRepo.getReferredByUid(transaction.author) as string
         await referralRepo.updateReferralsByUserId(referred, {
             referral: referred,
             amount: rewardCalculation(transaction.amount),
@@ -21,7 +21,15 @@ export default (config: IConfig): ITransactionService => {
         return transaction
     }
 
+    const withdrawRewardTransaction = async (): Promise<void> => {
+
+        //Get the list of all element filter by status = pending and make a total
+        //Update the user total with the sum all reward
+        //Update the reward changing the status of the to paid
+    }
+
     return {
-        createTransaction
+        createTransaction,
+        withdrawRewardTransaction
     }
 }
