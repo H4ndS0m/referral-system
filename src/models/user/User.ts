@@ -42,7 +42,7 @@ export const UserRepo = () => {
         return user
     }
 
-    const getReferredByUid = async (id:string) => {
+    const getReferredByUid = async (id: string) => {
         const referred = await userModel.findOne({ uid: id }, { referred: 1 })
         return referred?.referred
     }

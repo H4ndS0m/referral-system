@@ -5,6 +5,7 @@ const { String } = Schema.Types
 
 const TransactionSchema = new Schema(
     {
+        author: { type: String, required: true },
         method: {
             type: String,
             enum: ['credit-card', 'btc'],
